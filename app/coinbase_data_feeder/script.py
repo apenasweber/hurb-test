@@ -42,4 +42,4 @@ def update_coinbase_currencies_prices():
 
 if __name__ == "__main__":
     update_coinbase_currencies_prices()
-    sleep(5)
+    sleep(60)

@@ -27,6 +27,5 @@ black: # linter to organize readable code
 	docker-compose run --service-ports -e --rm api bash -c "python -m black ."
 
 host ?= http://localhost:8000
-stress_tests:  ## Run stress tests ex: make run_stress_test host=http://127.0.0.1:8000
-	docker-compose run --service-ports -e --rm api bash -c "locust -f app/tests/stress_tests/locustfile.py --host http://127.0.0.1:8000"
-	
+stress_tests:  ## Run stress tests ex: docker-compose run --service-ports -e --rm api bash -c "locust -f app/tests/stress_tests/locustfile.py --host http://127.0.0.1:8000"
+	docker-compose run --service-ports -e --rm api bash -c "locust -f app/tests/stress_tests/locustfile.py --headless -u 1000 -r 17 --run-time 1m --host http://127.0.0.1:8000"

@@ -5,8 +5,8 @@ from pydantic import BaseModel, validator
 
 class InputConversionSchema(BaseModel):
     from_this: str
-    amount: float
     to: str
+    amount: float
 
     @validator("from_this")
     def do_uppercase_on_fromthis_field(cls, from_this: str):

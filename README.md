@@ -15,11 +15,28 @@ Conforme repositório hurbcom/challenge-bravo, a API criada retorna JSON, para c
 ## Testes
 Foram criados testes unitários cobrindo todos endpoints da aplicação, convert/currency.
 Para executa-los utilize no terminal, na raíz do projeto:
-|Comando      | Ação
-|----------------|-------------------------------|
-| `docker compose run --service-ports -e --rm api bash -c "pytest ${test} --disable-warnings"`      | Executa testes unitários |
-| `docker-compose run --service-ports -e --rm api bash -c "locust -f app/tests/stress_tests/locustfile.py --host http://127.0.0.1:8000"`      | Executa testes de carga |
-INSERIR IMAGEM AQUI
+### 1. Testes unitários
+```bash
+docker compose run --service-ports -e --rm api bash -c "pytest ${test} --disable-warnings
+```
+![stress tests results](app/docs_images/unit_tests.png)
+
+### 2. Testes de carga
+```bash
+docker-compose up -d
+```
+```bash
+docker ps
+```
+Agora copie o container id da api
+```bash
+docker exec -it {container_id da api} bash
+```
+```bash
+locust -f app/tests/stress_tests/locustfile.py --headless -u 1000 -r 17 --run-time 1m --host http://127.0.0.1:8000
+```
+
+![stress tests results](app/docs_images/stress_tests.png)
 
 ## Banco de Dados
 O banco de dados possui 2 tabelas:
@@ -76,5 +93,4 @@ A aplicação também pode ser executada utilizando o make, com os seguintes com
 | `make unit_tests`| Executa testes unitários |
 | `make isort`      | Aplica isort em todo repositório para ordenar imports |
 | `make black`      | Aplica o linter black |
-| `make stress_tests`      | Executa testes de carga via terminal |
 
