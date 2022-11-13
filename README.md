@@ -57,25 +57,13 @@ A documentação extensa de todo tipo de input e output pode ser encontrada em h
 |`'/currency/{currency_code}'`   | DELETE        | Deleta moeda específica no DB  |
 |`'/convert'`   | GET        | Converte o valor de uma moeda baseada em outra moeda  |
 
-INSERIR IMAGEM AQUI
-
-As collections para testes de todos os endpoints encontra-se no arquivo challenge-bravo-collection.postman no diretório raiz do projeto, bastando apenas abrir o Postman e importa-la.
+![stress tests results](app/docs_images/endpoints.png)
 
 
 ## Como rodar a aplicação
 ### Requisitos para execução:
 1. Docker/docker-compose
-2. Crie arquivo .env na raíz do projeto com as seguintes informações:
-```
-DATABASE_URL=postgresql://postgres:password123@postgres:5432/currency_converter
-DATABASE_HOSTNAME=postgres
-DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=password123
-DATABASE_PORT=5432
-DATABASE_NAME=currency_converter
-POSTGRES_DB=currency_converter
-POSTGRES_PASSWORD=password123
-```
+2. Renomeie o arquivo ".env.example" para ".env"
 
 ### Passos para execução:
 1.   `git clone $seu-fork`
